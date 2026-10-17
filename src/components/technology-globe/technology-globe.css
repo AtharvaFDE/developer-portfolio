@@ -1,0 +1,672 @@
+.technology-globe-section {
+  --toolkit-accent: #5795ff;
+  --toolkit-accent-bright: #91baff;
+  --toolkit-accent-violet: #a76dff;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 42px clamp(24px, 5.2vw, 78px) 40px;
+  overflow: visible;
+  scroll-margin-top: 76px;
+  background:
+    radial-gradient(ellipse at 50% 64%, #257bff18, transparent 38%),
+    radial-gradient(ellipse at 16% 16%, #34245e4a, transparent 36%),
+    #070d17;
+}
+
+.technology-grid-glow {
+  position: absolute;
+  z-index: -1;
+  inset: 15% 10% 0;
+  background:
+    radial-gradient(ellipse at 50% 54%, #347dff17, transparent 54%),
+    radial-gradient(ellipse at 47% 80%, #8952ff10, transparent 47%);
+  filter: blur(26px);
+  pointer-events: none;
+}
+
+.technology-grid {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.technology-section-content {
+  position: relative;
+  width: min(100%, 1160px);
+  margin: 0 auto;
+}
+
+.technology-section-eyebrow {
+  margin: 0 0 11px 2px;
+  color: #aab6cb;
+  font: 500 9px / 1.5 "Poppins", sans-serif;
+  letter-spacing: 1.8px;
+}
+
+.technology-section-eyebrow span {
+  color: var(--toolkit-accent-bright);
+}
+
+.focus-area-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.toolkit-orbit-card {
+  margin-top: 26px;
+}
+
+.focus-area-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 172px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px 20px;
+  overflow: hidden;
+  border: 1px solid #ffffff20;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at 100% 0%, #5795ff0c, transparent 52%),
+    linear-gradient(145deg, #ffffff08, #0d1522ed 74%);
+  color: #f1f5f9;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 250ms ease,
+    background 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 300ms ease,
+    opacity 300ms ease;
+}
+
+.focus-area-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% 100%, #a76dff23, transparent 55%),
+    linear-gradient(120deg, transparent 15%, #91baff1a 48%, transparent 78%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(22%);
+}
+
+.focus-area-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.focus-area-card:hover {
+  transform: translateY(-4px);
+  border-color: #5795ff75;
+  background:
+    radial-gradient(ellipse at 100% 0%, #5795ff1b, transparent 55%),
+    linear-gradient(145deg, #ffffff0b, #0d1522f5 74%);
+  box-shadow:
+    0 16px 34px #02061155,
+    0 0 26px #5795ff18;
+}
+
+.focus-area-card:active {
+  transform: translateY(-1px) scale(0.985);
+}
+
+.focus-area-card.is-active {
+  z-index: 1;
+  transform: translateY(-3px);
+  border-color: #79aaffd9;
+  background:
+    radial-gradient(ellipse at 100% 0%, #5795ff25, transparent 56%),
+    linear-gradient(145deg, #5795ff15, #15172bf5 76%);
+  box-shadow:
+    inset 0 0 28px #5795ff12,
+    0 12px 35px #03081766,
+    0 0 26px #a76dff20;
+  animation: focus-card-select 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.focus-area-card.is-dimmed {
+  filter: blur(2px);
+  opacity: 0.48;
+}
+
+.focus-area-card.is-dimmed:hover {
+  opacity: 0.68;
+}
+
+.focus-area-card.is-active::before {
+  animation: focus-card-glow 720ms ease-out both;
+}
+
+.focus-area-card.is-active::after {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  left: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #91baff, #c4a6ff, transparent);
+  box-shadow: 0 0 14px #5795ff99;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: focus-card-line 550ms ease-out 80ms both;
+}
+
+.focus-area-card:focus-visible {
+  outline: 2px solid var(--toolkit-accent-bright);
+  outline-offset: 4px;
+}
+
+@keyframes focus-card-select {
+  0% {
+    filter: brightness(1);
+  }
+
+  38% {
+    filter: brightness(1.22);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes focus-card-glow {
+  0% {
+    opacity: 0;
+    transform: translateY(22%);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+}
+
+@keyframes focus-card-line {
+  0% {
+    transform: scaleX(0);
+  }
+
+  65% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0.72);
+  }
+}
+
+.focus-area-card.is-active:hover {
+  border-color: #91baff;
+  box-shadow:
+    inset 0 0 28px #5795ff12,
+    0 16px 38px #03081777,
+    0 0 30px #a76dff27;
+}
+
+.focus-area-card:focus-visible,
+.technology-node:focus-visible {
+  outline: 2px solid var(--toolkit-accent-bright);
+  outline-offset: 3px;
+}
+
+.focus-area-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  color: var(--toolkit-accent-bright);
+  font: 500 10px / 1.3 "Poppins", sans-serif;
+  letter-spacing: 1.35px;
+  text-transform: uppercase;
+}
+
+.focus-area-card strong {
+  display: block;
+  margin-bottom: 9px;
+  color: #f3f6ff;
+  font: 600 16px / 1.35 "Poppins", sans-serif;
+  letter-spacing: -0.25px;
+  text-transform: uppercase;
+}
+
+.focus-area-description {
+  max-width: 255px;
+  color: #b1bdd2;
+  font: 400 12px / 1.75 "Poppins", sans-serif;
+}
+
+.focus-area-card.is-active .focus-area-label {
+  color: #bca8ff;
+}
+
+.focus-area-card.is-active strong {
+  color: #ffffff;
+}
+
+@media (hover: none) {
+  .focus-area-card:active {
+    border-color: var(--toolkit-accent-bright);
+    box-shadow: 0 0 24px #5795ff28;
+  }
+}
+
+.globe-visualization {
+  position: relative;
+  margin: 42px auto 0;
+}
+
+.globe-heading {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.globe-heading h3 {
+  margin: 0;
+  color: transparent;
+  background: linear-gradient(100deg, #c4a6ff, #91baff 58%, #73c4ff);
+  background-clip: text;
+  font: 600 clamp(24px, 3vw, 38px) / 1.2 "Poppins", sans-serif;
+  letter-spacing: -0.8px;
+  text-transform: uppercase;
+  text-shadow: 0 0 24px #5795ff25;
+}
+
+.globe-heading p {
+  max-width: 740px;
+  margin: 9px auto 0;
+  color: #b7c5dd;
+  font: 400 clamp(13px, 1.3vw, 16px) / 1.75 "Poppins", sans-serif;
+}
+
+.globe-stage {
+  position: relative;
+  width: min(100%, 810px);
+  height: 410px;
+  margin: 14px auto 0;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.globe-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.globe-canvas-host,
+.globe-canvas-host canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.globe-canvas-host {
+  pointer-events: none;
+}
+
+.globe-canvas-host canvas {
+  display: block;
+}
+
+.technology-node {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  place-items: center;
+  border: 2px solid #5795ff8c;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, #0c2931, #091015 72%);
+  box-shadow:
+    inset 0 0 17px #5795ff18,
+    0 0 18px #5795ff20;
+  color: #91baff;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    color 200ms ease,
+    opacity 200ms ease,
+    scale 200ms ease;
+  cursor: pointer;
+}
+
+.technology-node:hover,
+.technology-node.is-selected {
+  z-index: 4;
+  border-color: var(--toolkit-accent-bright);
+  box-shadow:
+    0 0 0 5px #5795ff18,
+    0 0 26px #5795ff55,
+    inset 0 0 18px #a76dff20;
+  color: #e4d5ff;
+  scale: 1.04;
+}
+
+.technology-node.is-selected::after {
+  position: absolute;
+  inset: -7px;
+  border: 1px solid #a76dff9c;
+  border-radius: 50%;
+  content: "";
+  animation: technology-node-pulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+.globe-webgl-fallback,
+.globe-loading-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 13px;
+  color: var(--toolkit-accent-bright);
+  text-align: center;
+}
+
+.globe-webgl-fallback {
+  background: radial-gradient(circle, #5795ff18, transparent 47%);
+}
+
+.globe-webgl-fallback span,
+.globe-loading-fallback {
+  color: #aab5bd;
+  font-size: 11px;
+}
+
+.technology-info-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  width: min(100%, 820px);
+  min-height: 122px;
+  margin: 12px auto 0;
+  padding: 22px 26px;
+  border: 1px solid #5795ff38;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at 0% 0%, #5795ff12, transparent 48%),
+    linear-gradient(135deg, #101a29f2, #0a101bf5);
+  box-shadow:
+    inset 0 1px #ffffff08,
+    0 14px 38px #00000036,
+    0 0 30px #5795ff0c;
+  animation: technology-info-enter 280ms ease both;
+}
+
+.technology-info-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid #5795ff5c;
+  border-radius: 12px;
+  background: #5795ff1c;
+  color: #91baff;
+}
+
+.technology-info-panel > div:last-child {
+  min-width: 0;
+}
+
+.technology-info-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.technology-info-heading strong {
+  color: #f1f5f9;
+  font: 600 20px / 1.4 "Poppins", sans-serif;
+}
+
+.technology-info-heading span {
+  color: var(--toolkit-accent-bright);
+  font: 500 10px / 1.5 "Poppins", sans-serif;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.technology-info-panel p {
+  display: block;
+  margin: 8px 0 0;
+  color: #d2dced;
+  font: 400 15px / 1.7 "Poppins", sans-serif;
+}
+
+.technology-info-panel small {
+  display: block;
+  margin-top: 7px;
+  color: #9dacc2;
+  font: 400 13px / 1.65 "Poppins", sans-serif;
+}
+
+.globe-loading-fallback {
+  min-height: 400px;
+  position: relative;
+}
+
+.globe-loading-fallback span {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #5795ff38;
+  border-top-color: var(--toolkit-accent-bright);
+  border-radius: 50%;
+  animation: technology-loading-spin 800ms linear infinite;
+}
+
+@keyframes technology-node-pulse {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes technology-info-enter {
+  from {
+    transform: translateY(5px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes technology-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .technology-globe-section {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .focus-area-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .globe-stage {
+    height: 390px;
+  }
+}
+
+@media (max-width: 600px) {
+  .technology-globe-section {
+    padding: 68px 18px 45px;
+  }
+
+  .technology-section-eyebrow {
+    margin-bottom: 15px;
+    font-size: 8px;
+  }
+
+  .focus-area-grid {
+    gap: 8px;
+  }
+
+  .focus-area-card {
+    min-height: 146px;
+    padding: 16px 14px;
+  }
+
+  .focus-area-label {
+    gap: 5px;
+    margin-bottom: 10px;
+    font-size: 8px;
+  }
+
+  .focus-area-card strong {
+    margin-bottom: 7px;
+    font-size: 12px;
+  }
+
+  .focus-area-description {
+    font-size: 10px;
+    line-height: 1.65;
+  }
+
+  .globe-visualization {
+    margin-top: 38px;
+  }
+
+  .globe-heading h3 {
+    font-size: clamp(21px, 6.2vw, 27px);
+    letter-spacing: -0.45px;
+  }
+
+  .globe-heading p {
+    max-width: 520px;
+    margin: 8px auto 0;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .globe-stage {
+    width: calc(100% + 14px);
+    height: min(105vw, 400px);
+    min-height: 320px;
+    margin: 12px -7px 0;
+  }
+
+  .technology-node {
+    width: 49px;
+    height: 49px;
+  }
+
+  .technology-node svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .technology-info-panel {
+    gap: 12px;
+    min-height: 0;
+    margin-top: 10px;
+    padding: 17px 15px;
+  }
+
+  .technology-info-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .technology-info-heading {
+    gap: 5px 9px;
+  }
+
+  .technology-info-heading strong {
+    font-size: 17px;
+  }
+
+  .technology-info-heading span {
+    font-size: 9px;
+  }
+
+  .technology-info-panel p {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .technology-info-panel small {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 360px) {
+  .technology-globe-section {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+
+  .focus-area-description {
+    font-size: 9px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-area-card,
+  .technology-node,
+  .technology-info-panel {
+    animation: none;
+    transition: none;
+  }
+
+  .focus-area-card.is-active::before,
+  .focus-area-card.is-active::after {
+    animation: none;
+  }
+
+  .technology-node.is-selected::after {
+    animation: none;
+  }
+
+  .globe-loading-fallback span {
+    animation: none;
+  }
+}

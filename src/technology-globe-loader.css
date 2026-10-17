@@ -1,0 +1,29 @@
+.toolkit-deferred {
+  min-height: 620px;
+  scroll-margin-top: 76px;
+}
+
+.technology-load-fallback,
+.technology-load-error {
+  display: grid;
+  min-height: 620px;
+  place-items: center;
+  padding: 24px;
+  color: #aab6cb;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.technology-load-error {
+  color: #ffc2b8;
+}
+
+@media (max-width: 600px) {
+  .toolkit-deferred,
+  .technology-load-fallback,
+  .technology-load-error {
+    min-height: 650px;
+  }
+
+}
